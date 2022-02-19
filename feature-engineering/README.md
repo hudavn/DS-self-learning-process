@@ -12,5 +12,11 @@ Về kĩ thuật tạo đặc trưng chúng ta có 3 phương pháp chính:
 
 Bài toán của chúng ta là cần dự báo mức độ tín nhiệm của một danh sách những người thuê mới. Chúng ta phân loại danh sách thành 3 cấp độ [‘low’, ‘medium’, ‘high’].
 
+## Feature Extraction
+Trong thực tế dữ liệu thường ở dạng thô, đến từ nhiều nguồn khác nhau như văn bản, các phiếu điều tra, các hệ thống lưu trữ, website, app, ,… Nên đòi hỏi người xây dựng mô hình phải thu thập và tổng hợp lại các nguồn dữ liệu có liên quan đến đề tài nghiên cứu. Dữ liệu sau đó phải được làm sạch và chuyển thành dạng có cấu trúc (structure data) để tiến hành xây dựng mô hình. Do đó chúng ta sẽ cần đến các kĩ thuật trích lọc đặc trưng để biến dữ liệu từ dạng thô sơ như text, word, các nhãn sang các biến số học có khả năng định lượng.
+
+- Feature Extraction cho văn bản - **example01.py**
+
+
 ## References
 - [phamdinhkhanh.github.io](https://phamdinhkhanh.github.io/2019/01/07/Ky_thuat_feature_engineering.html)
