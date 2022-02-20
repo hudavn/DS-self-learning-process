@@ -1,19 +1,32 @@
+#%%
+from main import dataset
 
-# %%
-from pytesseract import image_to_string
-from PIL import Image
-import requests
-from io import BytesIO
-import matplotlib.pyplot as plt
+#%%
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from scipy.stats import beta
+from scipy.stats import shapiro
+import statsmodels.api as sm 
 import numpy as np
+
+# Tạo ra một chuỗi phân phối beta
+data = beta(1, 10).rvs(1000).reshape(-1, 1)
+print('data shape: %s'%str(data.shape))
+# Sử dụng kiểm định shapiro để kiểm tra tính phân phối chuẩn.
+shapiro(data)
+
 # %%
+shapiro(StandardScaler().fit_transform(data))
 
-##### Just a random picture from search
-img = 'http://ohscurrent.org/wp-content/uploads/2015/09/domus-01-google.jpg'
-img = requests.get(img)
+# %%
+# biến đổi dữ liệu theo phân phối chuẩn:
+price = np.float64(dataset.price.values)
+print('Head 5 of original prices:', price[:5])
+price_std = StandardScaler().fit_transform(price.reshape(-1, 1))
+print('Head 5 of standard scaling prices:\n', price_std[:5])
 
-img = Image.open(BytesIO(img.content))
+# %%
+price_mm = MinMaxScaler().fit_transform(price.reshape(-1, 1))
+print('Head of min max scaling price:\n', price_mm[:5])
 
-# show image
-img_arr = np.array(img)
-plt.imshow(img_arr)
+price_mm = (price - price.min())/(price.max() - price.min())
+print('Head of min max scaling price:\n', price_mm[:5])
