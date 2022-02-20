@@ -89,3 +89,4 @@ selector = SequentialFeatureSelector(logit, scoring = 'accuracy',
                                      n_jobs = -1)
 
 selector.fit(X, y)
+# %%
